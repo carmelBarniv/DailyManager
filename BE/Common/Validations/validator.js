@@ -4,7 +4,7 @@ const xregexp = require('xregexp');
 const Validatior = (elements) => {
     for (var key in elements) {
         const paranoid = xregexp('((%27)|(\'))|(--)|((%23)|(#))', 'i');
-        var value = elements[key];
+        var value = elements[key].toString();
 
         if (value === '' || value === 'undefined')
             throw new UserInvalidInputError('undefined object')

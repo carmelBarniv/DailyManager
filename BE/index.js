@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require("cors")
 const soldierRouter = require("./Routers/Soldier");
+const taskRouter = require("./Routers/Task");
+const groupRouter = require("./Routers/Group");
+const dailyRouter = require("./Routers/Daily");
 
 var corsOptions = {
     origin: [
@@ -26,6 +29,9 @@ app.use(express.json());
 app.use(cors(corsOptions));
 
 app.use("/soldier",soldierRouter);
+app.use("/task",taskRouter);
+app.use("/group",groupRouter);
+app.use("/daily",dailyRouter);
 
 app.get('/sainitys',async(req, res) =>{
   res.status(200).send();

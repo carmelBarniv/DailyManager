@@ -28,8 +28,8 @@ router.put('/:taskId', async (req, res) => {
     {
         let params = {};
         params.taskId = req.params.taskId;
-        if(req.query.statusId) {params['statusId'] = req.query.statusId;};
-        if(req.query.soldierId) {params['soldierId'] = req.query.soldierId;};
+        if(req.body.statusId) {params['statusId'] = req.body.statusId;};
+        if(req.body.soldierId) {params['soldierId'] = req.body.soldierId;};
         res.status(200).send(await taskHandler.Put(params));
     }
     catch (err) {

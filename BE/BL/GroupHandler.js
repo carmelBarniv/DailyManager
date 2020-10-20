@@ -14,7 +14,8 @@ const Insert= async (params)=>
 
 let CreationQuery = (name) =>{
     return `INSERT INTO Groups(name)
-    VALUES ('${name}')`;
+    VALUES ('${name}')
+    SELECT SCOPE_IDENTITY()`;
 }
 
 

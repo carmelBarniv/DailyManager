@@ -12,9 +12,11 @@ router.post('/',async (req, res) =>{
         params.name = req.body.name;
         if (req.body.soldiers){
             params.soldiers = req.body.soldiers;
-            res.status(200).send(groupHandler.Insert(params).then((res) =>
-            //add groupId to params  
-            await groupRelationsHandler.Insert(params)));
+            let results = await groupHandler.Insert(params);
+            let groupId = results.results[0][""]; // "" is the object key to the last connection inserted row (build in sql)
+            params.groupId = groupId;
+            results = await groupRelationsHandler.Insert(params);
+            res.status(200).send(results);
         }
         else{
             res.status(200).send(await groupHandler.Insert(params));
@@ -35,6 +37,7 @@ router.post('/Relation/:groupId',async (req, res) =>{
     try{
         let params = {};
         params.groupId = req.params.groupId; 
+        params.soldiers = req.body.soldiers;
         res.status(200).send(await groupRelationsHandler.Insert(params));
     }
     catch (err) {

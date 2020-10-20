@@ -1,4 +1,4 @@
-let SqlHandler = require('../DAL/SqlHandler2');
+let SqlHandler = require('../DAL/SqlHandler');
 let Validator = require("../Common/Validations/validator")
 const db = new SqlHandler();
 
