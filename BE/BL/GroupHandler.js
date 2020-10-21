@@ -1,5 +1,5 @@
-let SqlHandler = require('../DAL/SqlHandler');
-let Validator = require("../Common/Validations/validator")
+import SqlHandler from '../DAL/SqlHandler.js';
+import Validator from '../Common/Validations/validator.js';
 const db = new SqlHandler();
 
 
@@ -19,4 +19,4 @@ let CreationQuery = (name) =>{
 }
 
 
-module.exports.Insert = Insert;
+export default {Insert};

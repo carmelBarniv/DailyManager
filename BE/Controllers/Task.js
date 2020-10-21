@@ -1,5 +1,5 @@
-const express = require('express');
-const taskHandler = require('../BL/TaskHandler.js');
+import express from 'express';
+import taskHandler from './../BL/TaskHandler.js';
 
 
 const router = express.Router();
@@ -44,4 +44,4 @@ router.put('/:taskId', async (req, res) => {
 })
 
 
-module.exports = router;
+export default router;

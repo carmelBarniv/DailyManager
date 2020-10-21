@@ -1,6 +1,6 @@
-const express = require('express');
-const groupHandler = require('../BL/GroupHandler');
-const groupRelationsHandler = require('../BL/GroupRelationsHandler');
+import express from 'express';
+import groupHandler from '../BL/GroupHandler.js';
+import groupRelationsHandler from '../BL/GroupRelationsHandler.js';
 
 
 const router = express.Router();
@@ -52,4 +52,4 @@ router.post('/Relation/:groupId',async (req, res) =>{
 })
 
 
-module.exports = router;
+export default router;

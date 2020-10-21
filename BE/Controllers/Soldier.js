@@ -1,6 +1,5 @@
-const express = require('express');
-const soldierHandler = require('../BL/SoldierHandler');
-
+import express from 'express';
+import soldierHandler from './../BL/SoldierHandler.js';
 
 const router = express.Router();
 
@@ -25,5 +24,4 @@ router.post('/',async (req, res) =>{
 
 
 
-
-module.exports = router;
+export default router;

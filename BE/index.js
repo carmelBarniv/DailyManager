@@ -1,14 +1,15 @@
-const express = require('express');
-const cors = require("cors")
-const soldierRouter = require("./Routers/Soldier");
-const taskRouter = require("./Routers/Task");
-const groupRouter = require("./Routers/Group");
-const dailyRouter = require("./Routers/Daily");
+import express from 'express';
+import cors from 'cors';
+import soldierRouter from './Controllers/Soldier.js';
+import taskRouter from './Controllers/Task.js';
+import groupRouter from './Controllers/Group.js';
+import dailyRouter from './Controllers/Daily.js';
 
 var corsOptions = {
     origin: [
             "http://192.168.1.100:3000",
             "http://localHost:3000",
+            "http://localHost:3001"
         ]
   }
   

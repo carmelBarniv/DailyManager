@@ -1,6 +1,6 @@
-const { Sequelize, DataTypes } = require('sequelize');
+import Sequelize from 'sequelize';
 
-class SqlHandler {
+export default class SqlHandler {
     constructor() {
         this.sequelize = 
         new Sequelize('Daily', 'carmel', 'car', {
@@ -17,4 +17,3 @@ class SqlHandler {
 }
 
 
-module.exports = SqlHandler;

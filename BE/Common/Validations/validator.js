@@ -1,5 +1,5 @@
-const UserInvalidInputError = require('../Errors/invalidUserInputError')
-const xregexp = require('xregexp');
+import UserInvalidInputError from '../Errors/invalidUserInputError.js';
+import xregexp from 'xregexp';
 
 const Validatior = (elements) => {
     for (var key in elements) {
@@ -18,4 +18,4 @@ const Validatior = (elements) => {
     }
 }
 
-module.exports = Validatior;
+export default Validatior;

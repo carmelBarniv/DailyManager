@@ -1,6 +1,6 @@
-let SqlHandler = require('../DAL/SqlHandler');
-let Validator = require("../Common/Validations/validator");
-const UserInvalidInputError = require('../Common/Errors/invalidUserInputError')
+import SqlHandler from '../DAL/SqlHandler.js';
+import Validator from '../Common/Validations/validator.js';
+import UserInvalidInputError from '../Common/Errors/invalidUserInputError.js';
 const db = new SqlHandler();
 
 
@@ -61,4 +61,4 @@ let GetByGroupQuery = (groupId, date1, date2) =>{
 }
 
 
-module.exports.Get = Get;
+export default {Get };

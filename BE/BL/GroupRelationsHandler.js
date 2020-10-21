@@ -1,6 +1,5 @@
-let SqlHandler = require('../DAL/SqlHandler');
-let Validator = require("../Common/Validations/validator");
-const { promises } = require('dns');
+import SqlHandler from '../DAL/SqlHandler.js';
+import Validator from '../Common/Validations/validator.js';
 const db = new SqlHandler();
 
 
@@ -22,4 +21,4 @@ let CreationQuery = (groupId, soldierId) =>{
 }
 
 
-module.exports.Insert = Insert;
+export default {Insert};
