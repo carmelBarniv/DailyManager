@@ -1,5 +1,5 @@
 import express from 'express';
-import taskHandler from './../BL/TaskHandler.js';
+import taskHandler from '../../Services/TaskService.js';
 
 
 const router = express.Router();
@@ -7,10 +7,7 @@ const router = express.Router();
 
 router.post('/',async (req, res) =>{
     try{
-        let params = {};
-        params.name = req.body.name;
-        params.soldierId = req.body.soldierId;
-        res.status(200).send(await taskHandler.Insert(params));
+        res.status(200).send(await taskHandler.Insert(req.body));
     }
     catch (err) {
         console.log(err);
@@ -26,10 +23,7 @@ router.post('/',async (req, res) =>{
 router.put('/:taskId', async (req, res) => {
     try
     {
-        let params = {};
-        params.taskId = req.params.taskId;
-        if(req.body.statusId) {params['statusId'] = req.body.statusId;};
-        if(req.body.soldierId) {params['soldierId'] = req.body.soldierId;};
+        let params = {taskId:req.params.taskId, ...req.body};
         res.status(200).send(await taskHandler.Put(params));
     }
     catch (err) {

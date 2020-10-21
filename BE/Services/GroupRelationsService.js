@@ -8,14 +8,14 @@ const Insert= async (params)=>
     Validator(params);
     let res = "";
     await Promise.all(params.soldiers.map(async (soldierId) => {
-        let query = CreationQuery(params.groupId, soldierId)
+        const query = CreationQuery(params.groupId, soldierId)
         console.log("executing query: " + query);
         res = [...res, await db.Execute(query)]; // so it will always update res before adding
     }))
     return res;
 }
 
-let CreationQuery = (groupId, soldierId) =>{
+const CreationQuery = (groupId, soldierId) =>{
     return `INSERT INTO Groups_Relations(groupId, soldierId)
     VALUES (${groupId},${soldierId})`
 }

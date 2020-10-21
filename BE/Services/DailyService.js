@@ -9,23 +9,24 @@ const Get= async (params)=>
     Validator(params);
     let date_ob = new Date();
     
-    let day1 = ("0" + date_ob.getDate()).slice(-2);
+    const day1 = ("0" + date_ob.getDate()).slice(-2);
     
-    let month1 = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    const month1 = ("0" + (date_ob.getMonth() + 1)).slice(-2);
     
-    let year1 = date_ob.getFullYear();
+    const year1 = date_ob.getFullYear();
     
-    let today = `${year1}-${month1}-${day1}`;
+    const today = `${year1}-${month1}-${day1}`;
 
     date_ob.setDate(date_ob.getDate() - 1);
 
-    let day2 = ("0" + date_ob.getDate()).slice(-2);
+    const day2 = ("0" + date_ob.getDate()).slice(-2);
     
-    let month2 = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    const month2 = ("0" + (date_ob.getMonth() + 1)).slice(-2);
     
-    let year2 = date_ob.getFullYear();
+    const year2 = date_ob.getFullYear();
     
-    let yesterday = `${year2}-${month2}-${day2}`;
+    const yesterday = `${year2}-${month2}-${day2}`;
+
     let query;
 
     if (params.groupId){
@@ -42,7 +43,7 @@ const Get= async (params)=>
     return await db.Execute(query);
 }
 
-let GetBySoldierQuery = (soldierId, date1, date2 ) =>{
+const GetBySoldierQuery = (soldierId, date1, date2 ) =>{
     return `SELECT t.name, t.date, s.name as status, so.name as assigned
     FROM Tasks as t
     INNER JOIN Status as s ON s.id=t.statusId
@@ -50,7 +51,7 @@ let GetBySoldierQuery = (soldierId, date1, date2 ) =>{
     WHERE (t.date='${date1}' OR t.date='${date2}') AND t.soldierId='${soldierId}'`;
 }
 
-let GetByGroupQuery = (groupId, date1, date2) =>{
+const GetByGroupQuery = (groupId, date1, date2) =>{
     return `SELECT t.name, t.date, s.name as status, so.name as assigned
     FROM Groups as g
     INNER JOIN Groups_Relations as r ON  g.id=r.groupId

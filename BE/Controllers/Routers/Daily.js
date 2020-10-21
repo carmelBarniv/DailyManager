@@ -1,5 +1,5 @@
 import express from 'express';
-import dailyHandler from './../BL/DailyHandler.js';
+import dailyHandler from '../../Services/DailyService.js';
 
 
 const router = express.Router();
@@ -7,10 +7,7 @@ const router = express.Router();
 
 router.get('/',async (req, res) =>{
     try{
-        let params = {}
-        if(req.query.groupId) {params['groupId'] = req.query.groupId;};
-        if(req.query.soldierId) {params['soldierId'] = req.query.soldierId;};
-        res.status(200).send(await dailyHandler.Get(params));
+        res.status(200).send(await dailyHandler.Get(req.query));
     }
 
     catch (err) {

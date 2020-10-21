@@ -1,5 +1,5 @@
 import express from 'express';
-import soldierHandler from './../BL/SoldierHandler.js';
+import soldierHandler from '../../Services/SoldierService.js';
 
 const router = express.Router();
 

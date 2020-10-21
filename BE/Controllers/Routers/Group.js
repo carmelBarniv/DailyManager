@@ -1,6 +1,6 @@
 import express from 'express';
-import groupHandler from '../BL/GroupHandler.js';
-import groupRelationsHandler from '../BL/GroupRelationsHandler.js';
+import groupHandler from '../../Services/GroupService.js';
+import groupRelationsHandler from '../../Services/GroupRelationsService.js';
 
 
 const router = express.Router();
@@ -8,19 +8,7 @@ const router = express.Router();
 
 router.post('/',async (req, res) =>{
     try{
-        let params = {};
-        params.name = req.body.name;
-        if (req.body.soldiers){
-            params.soldiers = req.body.soldiers;
-            let results = await groupHandler.Insert(params);
-            let groupId = results.results[0][""]; // "" is the object key to the last connection inserted row (build in sql)
-            params.groupId = groupId;
-            results = await groupRelationsHandler.Insert(params);
-            res.status(200).send(results);
-        }
-        else{
-            res.status(200).send(await groupHandler.Insert(params));
-        }
+        res.status(200).send(await groupHandler.Insert(req.body));
     }
     catch (err) {
         console.log(err);
