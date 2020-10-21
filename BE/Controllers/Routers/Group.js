@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post('/',async (req, res) =>{
     try{
-        res.status(200).send(await groupHandler.Insert(req.body));
+        res.status(200).send({groupId:await groupHandler.Insert(req.body)});
     }
     catch (err) {
         console.log(err);

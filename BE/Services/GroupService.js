@@ -10,18 +10,17 @@ const Insert= async (params)=>
 
     const query = CreationQuery(params.name)
     console.log("executing query: " + query);
-    const res = await db.Execute(query);
-    const groupId = res.results[0][""]; // "" is the object key to the last connection inserted row (build in sql)
+    const groupId = await db.GetExecutedId(query);
+    console.log(groupId); 
     if (params.soldiers){
         eventEmitter.emit('create_group', {groupId, soldiers:params.soldiers});
     }
-    return res;
+    return groupId;
 }
 
 const CreationQuery = (name) =>{
     return `INSERT INTO Groups(name)
-    VALUES ('${name}')
-    SELECT SCOPE_IDENTITY()`;
+    VALUES ('${name}')`;
 }
 
 
