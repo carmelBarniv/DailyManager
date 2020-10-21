@@ -7,9 +7,11 @@ const dailyRouter = require("./Routers/Daily");
 
 var corsOptions = {
     origin: [
-            "http://192.168.1.100:3000",
-            "http://localHost:3000",
-        ]
+            "http://localHost:3001"
+            // "http://192.168.1.100:3000",
+            // "http://localHost:3000"
+        ],
+        optionsSuccessStatus: 200
   }
   
 const app = express();

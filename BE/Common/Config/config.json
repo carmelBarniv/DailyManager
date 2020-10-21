@@ -1,0 +1,7 @@
+{
+    "db":{
+        "sever":"localHost\\DESKTOP-BVF3S3O\\SQLEXPRESS",
+        "user":"DESKTOP-BVF3S3O\\Admin",
+        "database":"model"
+    }
+}
