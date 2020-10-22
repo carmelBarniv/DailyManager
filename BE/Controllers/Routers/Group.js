@@ -5,10 +5,9 @@ import groupRelationsHandler from '../../Services/GroupRelationsService.js';
 
 const router = express.Router();
 
-
-router.post('/',async (req, res) =>{
+const postGroup = (service) => async (req, res) =>{
     try{
-        res.status(200).send({groupId:await groupHandler.Insert(req.body)});
+        res.status(200).send(await service.Insert(req.body));
     }
     catch (err) {
         console.log(err);
@@ -19,14 +18,16 @@ router.post('/',async (req, res) =>{
             res.status(500).send({ errorContent: err.message });
         }
     }
-})
+}
 
-router.post('/Relation/:groupId',async (req, res) =>{
+router.post('/', postGroup(groupHandler));
+
+const postRelation = (service) => async (req, res) =>{
     try{
         let params = {};
         params.groupId = req.params.groupId; 
         params.soldiers = req.body.soldiers;
-        res.status(200).send(await groupRelationsHandler.Insert(params));
+        res.status(200).send(await service.Insert(params));
     }
     catch (err) {
         console.log(err);
@@ -37,7 +38,9 @@ router.post('/Relation/:groupId',async (req, res) =>{
             res.status(500).send({ errorContent: err.message });
         }
     }
-})
+}
+
+router.post('/Relation/:groupId', postRelation(groupRelationsHandler))
 
 
 export default router;

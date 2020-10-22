@@ -4,10 +4,9 @@ import dailyHandler from '../../Services/DailyService.js';
 
 const router = express.Router();
 
-
-router.get('/',async (req, res) =>{
+const getDaily = (service) =>async (req, res) =>{
     try{
-        res.status(200).send(await dailyHandler.Get(req.query));
+        res.status(200).send(await service.Get(req.query));
     }
 
     catch (err) {
@@ -18,7 +17,8 @@ router.get('/',async (req, res) =>{
             res.status(500).send({ errorContent: err.message });
         }
     }
-})
+}
+router.get('/', getDaily(dailyHandler))
 
 
 export default router;

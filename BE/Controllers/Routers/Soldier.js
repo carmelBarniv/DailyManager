@@ -4,9 +4,10 @@ import soldierHandler from '../../Services/SoldierService.js';
 const router = express.Router();
 
 
-router.post('/',async (req, res) =>{
+
+const postSoldier = (service) => async (req, res) =>{
     try{
-        res.status(200).send(await soldierHandler.Insert(req.body));
+        res.status(200).send(await service.Insert(req.body));
     }
     catch (err) {
         console.log(err);
@@ -17,9 +18,9 @@ router.post('/',async (req, res) =>{
             res.status(500).send({ errorContent: err.message });
         }
     }
-})
+}
 
-
+router.post('/', postSoldier(soldierHandler))
 
 
 export default router;
