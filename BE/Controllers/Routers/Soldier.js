@@ -6,9 +6,7 @@ const router = express.Router();
 
 router.post('/',async (req, res) =>{
     try{
-        let params = {};
-        params.name = req.body.name;
-        res.status(200).send(await soldierHandler.Insert(params));
+        res.status(200).send(await soldierHandler.Insert(req.body));
     }
     catch (err) {
         console.log(err);

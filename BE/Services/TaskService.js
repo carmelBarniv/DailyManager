@@ -1,49 +1,36 @@
-import SqlHandler from '../DAL/SqlHandler.js';
 import Validator from '../Common/Validations/validator.js';
-const db = new SqlHandler();
+import taskModel from '../DAL/Models/TaskModel.js'
 
 
 const Insert= async (params)=>
 {
     Validator(params);
-    let date_ob = new Date();
+    const date_ob = new Date();
 
-    let day = ("0" + date_ob.getDate()).slice(-2);
+    const day = ("0" + date_ob.getDate()).slice(-2);
 
-    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+    const month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
 
-    let year = date_ob.getFullYear();
+    const year = date_ob.getFullYear();
 
-    let date = `${year}-${month}-${day}`;
+    const date = `${year}-${month}-${day}`;
 
-    let query = CreationQuery(params.name, params.soldierId, date)
-    console.log("executing query: " + query);
-    return await db.Execute(query);
+    return await taskModel.Create(params.name, params.soldierId, date);
 }
 
-let CreationQuery = (name, soldierId, date) =>{
-    return `INSERT INTO Tasks(name, date, soldierId, statusId)
-    VALUES ('${name}', '${date}',${soldierId},1)`;
-}
 
-let Put = async  (params) =>{
+const Put = async  (params) =>{
     Validator(params);
-    let query = PutQuery(params);
-    console.log(query);
-    return await db.Execute(query);
-}
-
-let PutQuery = (params) =>{
-    let query = 'UPDATE Tasks SET ';
+    let paramsToUpdate = [];
     Object.keys(params).forEach(key =>{
+        let row = {};
         if(key != "taskId"){
-            query += ` ${key} = '${params[key]}',`;
+            row[key] = params[key];
+            paramsToUpdate.push(row);
         }
     });
-    if (query[query.length - 1] != ','){
-        return query += ` WHERE id = ${params.taskId}`
-    }
-    return query.slice(0, query.length -1) + ` WHERE id = ${params.taskId}`;
+    return await taskModel.Update(paramsToUpdate, params.taskId);
+
 }
 
 
