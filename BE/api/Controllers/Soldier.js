@@ -1,10 +1,3 @@
-import express from 'express';
-import soldierHandler from '../../Services/SoldierService.js';
-
-const router = express.Router();
-
-
-
 const postSoldier = (service) => async (req, res) =>{
     try{
         res.status(200).send(await service.Insert(req.body));
@@ -20,7 +13,6 @@ const postSoldier = (service) => async (req, res) =>{
     }
 }
 
-router.post('/', postSoldier(soldierHandler))
 
 
-export default router;
+export default {postSoldier};

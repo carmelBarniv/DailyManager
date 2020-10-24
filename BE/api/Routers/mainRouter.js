@@ -1,7 +1,7 @@
-import soldierRouter from './Routers/Soldier.js';
-import taskRouter from './Routers/Task.js';
-import groupRouter from './Routers/Group.js';
-import dailyRouter from './Routers/Daily.js';
+import soldierRouter from './Soldier.js';
+import taskRouter from './Task.js';
+import groupRouter from './Group.js';
+import dailyRouter from './Daily.js';
 import express from 'express';
 
 const router = express.Router();

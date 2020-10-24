@@ -1,8 +1,3 @@
-import express from 'express';
-import dailyHandler from '../../Services/DailyService.js';
-
-
-const router = express.Router();
 
 const getDaily = (service) =>async (req, res) =>{
     try{
@@ -18,7 +13,6 @@ const getDaily = (service) =>async (req, res) =>{
         }
     }
 }
-router.get('/', getDaily(dailyHandler))
 
 
-export default router;
+export default {getDaily};

@@ -1,4 +1,3 @@
-// import db from '../DAL/Handlers/SqlHandler.js';
 import Validator from '../Common/Validations/validator.js';
 import SoldierModel from '../DAL/Models/SoldierModel.js'
 

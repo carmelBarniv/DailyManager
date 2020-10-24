@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import routers from './Controllers/mainRouter.js';
+import routers from './api/Routers/mainRouter.js';
 import config from './Common/Config/config.js';
 import './Subscribers/index.js';
 

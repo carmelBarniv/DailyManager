@@ -1,8 +1,3 @@
-import express from 'express';
-import taskHandler from '../../Services/TaskService.js';
-
-
-const router = express.Router();
 
 const postTask = (service) => async (req, res) =>{
     try{
@@ -19,7 +14,6 @@ const postTask = (service) => async (req, res) =>{
     }
 };
 
-router.post('/', postTask(taskHandler));
 
 const putTask = (service) => async (req, res) => {
     try
@@ -38,7 +32,6 @@ const putTask = (service) => async (req, res) => {
     }
 };
 
-router.put('/:taskId', putTask(taskHandler));
 
 
-export default router;
+export default {postTask, putTask};
