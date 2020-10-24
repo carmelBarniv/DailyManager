@@ -22,13 +22,8 @@ const Insert= async (params)=>
 const Put = async  (params) =>{
     Validator(params);
     let paramsToUpdate = [];
-    Object.keys(params).forEach(key =>{
-        let row = {};
-        if(key != "taskId"){
-            row[key] = params[key];
-            paramsToUpdate.push(row);
-        }
-    });
+    Object.keys(params).filter(key => key != "taskId")
+    .map(key => paramsToUpdate.push({[key]:params[key]}));
     return await taskModel.Update(paramsToUpdate, params.taskId);
 
 }
