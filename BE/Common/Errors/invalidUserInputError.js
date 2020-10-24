@@ -1,4 +1,4 @@
-class UserInvalidInputError extends Error {
+export default class UserInvalidInputError extends Error {
     constructor(...params) {
       super(...params)
       if (Error.captureStackTrace) {
@@ -6,5 +6,3 @@ class UserInvalidInputError extends Error {
       }
     }
 }
-
-module.exports = UserInvalidInputError
